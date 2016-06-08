@@ -1,6 +1,8 @@
 FROM gliderlabs/alpine:3.2
 
-ENV DOCKER_VERSION 1.6.2
+# Use docker < 1.11 as in 1.11 sha256 is added and this script breaks. Till we
+# fix that, it's better to use an older docker version
+ENV DOCKER_VERSION 1.10.3
 
 # We get curl so that we can avoid a separate ADD to fetch the Docker binary, and then we'll remove it
 RUN apk --update add bash curl \
